@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function CartTotals({ value }) {
+import PayPalButton from './PayPalButton';
+
+export default function CartTotals({ value, history }) {
   const { cartSubTotal, cartTax, cartTotal, clearCart } = value;
 
   return (
@@ -38,6 +40,7 @@ export default function CartTotals({ value }) {
                 {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(cartTotal)}
               </strong>
             </h5>
+            <PayPalButton total={cartTotal} clearCart={clearCart} history={history} />
           </div>
         </div>
       </div>
